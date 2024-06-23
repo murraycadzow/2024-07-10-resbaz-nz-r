@@ -19,13 +19,13 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0'
+          ruby-version: "3.0"
           bundler-cache: true
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5.1.0
         with:
-          python-version: '3.x'
+          python-version: "3.x"
 
       - name: Install GitHub Pages, Bundler, and kramdown gems
         run: |
@@ -78,7 +78,6 @@ jobs:
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
-
 
       - name: Install system dependencies for R packages
         if: steps.check-rmd.outputs.count != 0
